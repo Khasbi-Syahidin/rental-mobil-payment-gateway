@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/show/{id}', [UserController::class, 'show']);
+Route::get('/show/{id}', [UserController::class, 'show'])->name('mobil.show');
 
 Route::prefix('/')->middleware(['auth', 'user'])->name('user.')->group(function () {
     // require __DIR__ . '/user.php';

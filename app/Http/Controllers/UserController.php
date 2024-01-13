@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $mobil = Mobil::find($id);
+        $mobil = Mobil::find($id)->first();
         // dd($mobil->image);
         return view('user.show', ['mobil' => $mobil]);
     }

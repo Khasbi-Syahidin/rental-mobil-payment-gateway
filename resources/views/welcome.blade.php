@@ -846,27 +846,39 @@
                         <ul id="list"
                             class="hidden p-2 border-r bg-white absolute rounded top-0 left-0 right-0 shadow mt-16 md:mt-16">
                             <li
-                                class="flex cursor-pointer text-gray-600 dark:text-gray-200 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                                class="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
                                 <a href="javascript:void(0)">
-                                    <span class="ml-2 font-bold">Products</span>
-                                </a>
-                            </li>
-                            <li class="flex flex-col cursor-pointer text-gray-600 dark:text-gray-200 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center"
-                                onclick="dropdownHandler(this)">
-                                <a href="javascript:void(0)">
-                                    <span class="ml-2 font-bold">Claims</span>
+                                    <span class="ml-2 font-bold">Product</span>
                                 </a>
                             </li>
                             <li
-                                class="flex cursor-pointer text-gray-600 dark:text-gray-200 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
+                                class="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
                                 <a href="javascript:void(0)">
-                                    <span class="ml-2 font-bold">Renewals</span>
+                                    <span class="ml-2 font-bold">Informasi Transaksi</span>
                                 </a>
                             </li>
-                            <li class="flex flex-col cursor-pointer text-gray-600 dark:text-gray-200 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center"
+                            <li class="flex flex-col cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center"
                                 onclick="dropdownHandler(this)">
                                 <a href="javascript:void(0)">
-                                    <span class="ml-2 font-bold">Reports</span>
+                                    <span class="ml-2 font-bold">Informasi Akun</span>
+                                </a>
+                            </li>
+                            <li
+                                class="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
+                                <a href="javascript:void(0)">
+                                    <span class="ml-2 font-bold">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="flex flex-col cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center"
+                                onclick="dropdownHandler(this)">
+                                <a href="javascript:void(0)">
+                                    <span class="ml-2 font-bold">Bantuan</span>
+                                </a>
+                            </li>
+                            <li class="flex flex-col cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center"
+                                onclick="dropdownHandler(this)">
+                                <a href="javascript:void(0)">
+                                    <span class="ml-2 font-bold">Logout</span>
                                 </a>
                             </li>
                         </ul>
@@ -891,30 +903,88 @@
                     </a>
                 </div>
                 <div class="w-5/6">
-                    <div class="flex items-center justify-end">
-                        <ul class="text-gray-800 dark:text-white lg:space-x-8 flex items-center leading-none">
+                    <div class="flex items-center justify-center">
+                        <ul class="text-gray-800 lg:space-x-8 flex items-center leading-none">
                             <li>
                                 <a class="hover:text-indigo-500 text-lg focus:text-indigo-500"
                                     href="#">Products</a>
                             </li>
                             <li class="ml-4 hover:text-indigo-500 ">
-                                <a class="focus:text-indigo-500 text-lg" href="javascript:void(0)">Claims</a>
+                                <a class="focus:text-indigo-500 text-lg" href="javascript:void(0)">Informasi</a>
                             </li>
                             <li class="ml-4 hover:text-indigo-500 focus:text-indigo-500">
-                                <a class="focus:text-indigo-500 text-lg" href="javascript:void(0)">Renewal</a>
+                                <a class="focus:text-indigo-500 text-lg" href="javascript:void(0)">Bantuan</a>
                             </li>
                             <li class="ml-4 hover:text-indigo-500 focus:text-indigo-500">
-                                <a class="focus:text-indigo-500 text-lg" href="javascript:void(0)">Support</a>
+                                <a class="focus:text-indigo-500 text-lg" href="javascript:void(0)">Contact</a>
                             </li>
                         </ul>
-                        <div class="pl-40">
-                            <a href="{{ route('login') }}">
-                                <button role="button" aria-label="live chat"
-                                    class="focus:bg-indigo-600 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 hover:bg-indigo-600 text-white px-6 py-2 font-semibold rounded focus:outline-none">Login/Register</button>
-                            </a>
-                        </div>
+
                     </div>
                 </div>
+                <div x-data="{ isOpen: false }" class="w-fit justify-end">
+                    @auth
+                        {{-- Tombol logout atau aksi lain --}}
+                        @if (auth()->user() && auth()->user()->image == '')
+                            <img id="open" onclick="mMenuHandler(true)" class="rounded-full cursor-pointer" width="45"
+                                src="data:image/png;base64,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"
+                                alt="">
+                        @else
+                            <img id="open" onclick="mMenuHandler(true)" class="rounded-full cursor-pointer" width="45" src="{{ asset('${auth()->user()->image}') }}" alt="">
+                        @endforelse
+                        <div x-show="isOpen" x-on:click.away="isOpen = false"
+                            class="absolute z-10 mt-2 bg-white border rounded-md shadow-lg">
+                            <!-- Dropdown content here -->
+                            <div class="flex items-center">
+                                <ul id="list"
+                                    class="hidden p-2 border-r bg-white absolute rounded top-0 left-0 right-0 shadow mt-16 md:mt-16">
+                                    <li
+                                        class="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                                        <a href="javascript:void(0)">
+                                            <span class="ml-2 font-bold">Product</span>
+                                        </a>
+                                    </li>
+                                    <li
+                                        class="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                                        <a href="javascript:void(0)">
+                                            <span class="ml-2 font-bold">Informasi Transaksi</span>
+                                        </a>
+                                    </li>
+                                    <li class="flex flex-col cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center"
+                                        onclick="dropdownHandler(this)">
+                                        <a href="javascript:void(0)">
+                                            <span class="ml-2 font-bold">Informasi Akun</span>
+                                        </a>
+                                    </li>
+                                    <li
+                                        class="flex cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
+                                        <a href="javascript:void(0)">
+                                            <span class="ml-2 font-bold">Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li class="flex flex-col cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center"
+                                        onclick="dropdownHandler(this)">
+                                        <a href="javascript:void(0)">
+                                            <span class="ml-2 font-bold">Bantuan</span>
+                                        </a>
+                                    </li>
+                                    <li class="flex flex-col cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center"
+                                        onclick="dropdownHandler(this)">
+                                        <a href="javascript:void(0)">
+                                            <span class="ml-2 font-bold">Logout</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        @else
+                            <div class="pl-40">
+                                <a href="{{ route('login') }}">
+                                    <button role="button" aria-label="live chat"
+                                        class="focus:bg-indigo-600 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 hover:bg-indigo-600 text-white px-6 py-2 font-semibold rounded focus:outline-none">Login/Register</button>
+                                </a>
+                            </div>
+                        @endauth
+                    </div>
             </nav>
             <div class="pt-32 md:pb-32 pb-20 lg:flex items-center relative z-10 container mx-auto">
                 <div class="w-full lg:w-1/2 h-full lg:pr-10 xl:pr-0">
@@ -937,81 +1007,79 @@
             <div class="flex flex-col">
                 <div class="flex flex-col justify-center">
                     <div class="relative">
-                        <img class="sm:block w-full"
-                            src="{{ asset('image/iklan.png')}}"
-                            alt="sofa" />
+                        <img class="sm:block w-full" src="{{ asset('image/iklan.png') }}" alt="sofa" />
                     </div>
                 </div>
                 <div class="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
                     @foreach ($mobils as $mobil)
-                       <a href="{{ route('mobil.show', $mobil->id) }}">
-                        <div
-                            class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:hover:bg-gray-700 sm:p-2 py-3 px-1 flex justify-center items-center">
-                            <img class="group-hover:opacity-60 transition duration-500" src="{{ $mobil->image }}"
-                                alt="sofa-2" />
+                        <a href="{{ route('mobil.show', $mobil->id) }}">
                             <div
-                                class="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
-                                <div>
-                                    <p
-                                        class="group-hover:opacity-60 transition duration-500 text-xl leading-5 text-gray-600 dark:text-white">
-                                        {{ $mobil->merk }}</p>
+                                class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:hover:bg-gray-700 sm:p-2 py-3 px-1 flex justify-center items-center">
+                                <img class="group-hover:opacity-60 transition duration-500" src="{{ $mobil->image }}"
+                                    alt="sofa-2" />
+                                <div
+                                    class="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
+                                    <div>
+                                        <p
+                                            class="group-hover:opacity-60 transition duration-500 text-xl leading-5 text-gray-600 dark:text-white">
+                                            {{ $mobil->merk }}</p>
+                                    </div>
+                                    <div>
+                                        <p
+                                            class="group-hover:opacity-60 transition duration-500 text-xl font-semibold leading-5 text-gray-800 dark:text-white">
+                                            {{ $mobil->tarif }}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p
-                                        class="group-hover:opacity-60 transition duration-500 text-xl font-semibold leading-5 text-gray-800 dark:text-white">
-                                        {{ $mobil->tarif }}</p>
+                                <div
+                                    class="group-hover:opacity-60 transition duration-500 absolute bottom-8 right-8 flex justify-start items-start flex-row space-x-2">
+                                    <button
+                                        class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
+                                    <button
+                                        class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
+                                </div>
+                                <div
+                                    class="flex flex-col bottom-8 left-8 space-y-4 absolute opacity-0 group-hover:opacity-100 transition duration-500">
+                                    <button>
+                                        <img class="dark:hidden"
+                                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1.svg"
+                                            alt="add">
+                                        <img class="hidden dark:block"
+                                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1dark.svg"
+                                            alt="add">
+                                    </button>
+                                    <button>
+                                        <img class="dark:hidden"
+                                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2.svg"
+                                            alt="view">
+                                        <img class="hidden dark:block"
+                                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2dark.svg"
+                                            alt="view">
+                                    </button>
+                                    <button>
+                                        <img class="dark:hidden"
+                                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3.svg"
+                                            alt="like">
+                                        <img class="hidden dark:block"
+                                            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3dark.svg"
+                                            alt="like" />
+                                    </button>
                                 </div>
                             </div>
-                            <div
-                                class="group-hover:opacity-60 transition duration-500 absolute bottom-8 right-8 flex justify-start items-start flex-row space-x-2">
-                                <button
-                                    class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
-                                <button
-                                    class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
-                            </div>
-                            <div
-                                class="flex flex-col bottom-8 left-8 space-y-4 absolute opacity-0 group-hover:opacity-100 transition duration-500">
-                                <button>
-                                    <img class="dark:hidden"
-                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1.svg"
-                                        alt="add">
-                                    <img class="hidden dark:block"
-                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1dark.svg"
-                                        alt="add">
-                                </button>
-                                <button>
-                                    <img class="dark:hidden"
-                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2.svg"
-                                        alt="view">
-                                    <img class="hidden dark:block"
-                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2dark.svg"
-                                        alt="view">
-                                </button>
-                                <button>
-                                    <img class="dark:hidden"
-                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3.svg"
-                                        alt="like">
-                                    <img class="hidden dark:block"
-                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3dark.svg"
-                                        alt="like" />
-                                </button>
-                            </div>
-                        </div>
                         </a>
                     @endforeach
                 </div>
                 <div class="flex justify-end items-end mt-12">
                     <div class="flex flex-row items-center justify-center space-x-8">
                         <button
-                            class="text-base leading-none text-gray-800 dark:text-white border-b-2 border-transparent focus:outline-none focus:border-gray-800">
+                            class="text-base leading-none text-gray-800  border-b-2 border-transparent focus:outline-none focus:border-gray-800">
                             <p>1</p>
                         </button>
                         <button
-                            class="text-base leading-none text-gray-800 dark:text-white border-b-2 border-transparent focus:outline-none focus:border-gray-800">
+                            class="text-base leading-none text-gray-800  border-b-2 border-transparent focus:outline-none focus:border-gray-800">
                             <p>2</p>
                         </button>
                         <button
-                            class="text-base leading-none text-gray-800 dark:text-white border-b-2 border-transparent focus:outline-none focus:border-gray-800">
+                            class="text-base leading-none text-gray-800  border-b-2 border-transparent focus:outline-none focus:border-gray-800">
                             <p>3</p>
                         </button>
                         <button class="flex justify-center items-center">
@@ -1030,10 +1098,10 @@
     </section>
     <footer>
 
-        <div class="pt-12 xl:pt-14">
+        <div class="pt-12 xl:pt-14 bg-gray-800">
             <div tabindex="0" aria-label="footer"
                 class="focus:outline-none w-full bg-gray-800 border-gray-300 dark:border-gray-700 border-t lg:w-11/12 md:w-11/12 lg:mx-auto md:mx-auto">
-                <div class="container mx-auto py-12">
+                <div class="container py-12">
                     <div class="xl:flex lg:flex md:flex pt-6">
                         <div class="w-11/12 xl:w-3/6 lg:w-2/5 mx-auto lg:mx-0 xl:mx-0">
                             <div class="flex items-center mb-6 xl:mb-0 lg:mb-0">
