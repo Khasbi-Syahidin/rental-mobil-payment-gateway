@@ -944,6 +944,7 @@
                 </div>
                 <div class="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
                     @foreach ($mobils as $mobil)
+                       <a href="{{ route('mobil.show', $mobil->id) }}">
                         <div
                             class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:hover:bg-gray-700 sm:p-2 py-3 px-1 flex justify-center items-center">
                             <img class="group-hover:opacity-60 transition duration-500" src="{{ $mobil->image }}"
@@ -996,6 +997,7 @@
                                 </button>
                             </div>
                         </div>
+                        </a>
                     @endforeach
                 </div>
                 <div class="flex justify-end items-end mt-12">

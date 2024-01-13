@@ -9,17 +9,21 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $mobils = Mobil::all();
         return view('welcome', ['mobils' => $mobils]);
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $mobil = Mobil::find($id);
+        // dd($mobil->image);
         return view('user.show', ['mobil' => $mobil]);
     }
 
-    public function pinjam(Request $request, $id){
+    public function pinjam(Request $request, $id)
+    {
         $mobil = Mobil::find($id);
         $user_id = Auth::user()->id;
 
@@ -28,11 +32,11 @@ class UserController extends Controller
         return view('user.pinjam', ['mobil' => $mobil]);
     }
 
-    public function showUser(){
+    public function showUser()
+    {
         $user_id = Auth::user()->id;
         $data_pinjam = Sewa::where('user_id', $user_id)->get();
 
         return view('user.showUser', ['data_pinjam' => $data_pinjam]);
     }
-
 }

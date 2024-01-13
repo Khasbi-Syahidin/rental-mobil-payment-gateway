@@ -90,17 +90,25 @@ class AdminController extends Controller
         }
 
         $mobil->delete();
-        return redirect('/dashboard');
+        return redirect('/dashboard/home');
     }
 
     public function transaction()
     {
+        $user_ids = Sewa::pluck('user_id')->unique();
+        $mobil_ids = Mobil::pluck('mobil_id')->unique();
         $sewa = Sewa::all();
-        $user = User::all($sewa->user_id());
-        $mobil = Mobil::all($sewa->mobil_id());
 
-        $data = compact('sewa', 'user', 'mobil');
-        return view('admin.transaction', ['data' => $data]);
+        $data = [
+            'user_ids' => $user_ids,
+            'mobil_ids' => $mobil_ids,
+            'sewa' => $sewa,
+        ];
+
+        dd($data);
+        return view('admin.alltransaction', ['data' => $data]);
+
+
     }
 
     public function all()

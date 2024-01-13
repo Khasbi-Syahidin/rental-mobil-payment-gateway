@@ -306,16 +306,16 @@
                                     </thead>
                                     <tbody>
                                         @php $no = 1 @endphp
-                                        @foreach ($mobils as $mobil)
+                                        @foreach ($datas as $data)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ $mobil->merk }}</td>
-                                                <td>{{ $mobil->model }}</td>
-                                                <td>{{ $mobil->nomor_plat }}</td>
-                                                <td>{{ $mobil->tarif }}</td>
-                                                <td>{{ $mobil->status }}</td>
-                                                <td>{{ $mobil->tanggal_awal_ready }}</td>
-                                                <td>{{ $mobil->tanggal_akhir_ready }}</td>
+                                                <td>{{ $data->merk }}</td>
+                                                <td>{{ $data->model }}</td>
+                                                <td>{{ $data->nomor_plat }}</td>
+                                                <td>{{ $data->tarif }}</td>
+                                                <td>{{ $data->status }}</td>
+                                                <td>{{ $data->tanggal_awal_ready }}</td>
+                                                <td>{{ $data->tanggal_akhir_ready }}</td>
                                                 <td>
                                                     <a href="{{ route('admin.mobil.edit', $mobil->id) }}"
                                                         class="btn btn-success">
