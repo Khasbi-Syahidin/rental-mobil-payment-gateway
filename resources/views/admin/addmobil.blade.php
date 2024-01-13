@@ -312,9 +312,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="status">Status</label>
-                                <input type="text" class="form-control" id="status" name="status"
-                                    placeholder="Masukkan Status Mobil">
+                                <select class="form-control" id="status" name="status">
+                                    <option value="">Pilih Status</option>
+                                    <option value="Ready">Ready</option>
+                                    <option value="Disewa">Disewa</option>
+                                </select>
                             </div>
+
                             <div class="form-group">
                                 <label for="model">Tanggal Awal Ready</label>
                                 <input type="date" class="form-control" id="model" name="tanggal_awal_ready"

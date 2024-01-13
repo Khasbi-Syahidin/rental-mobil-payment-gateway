@@ -309,15 +309,15 @@
                                         @foreach ($datas as $data)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ $data->merk }}</td>
-                                                <td>{{ $data->model }}</td>
+                                                <td>{{ $data }}</td>
+                                                {{-- <td>{{ $data->model }}</td>
                                                 <td>{{ $data->nomor_plat }}</td>
                                                 <td>{{ $data->tarif }}</td>
                                                 <td>{{ $data->status }}</td>
                                                 <td>{{ $data->tanggal_awal_ready }}</td>
                                                 <td>{{ $data->tanggal_akhir_ready }}</td>
-                                                <td>
-                                                    <a href="{{ route('admin.mobil.edit', $mobil->id) }}"
+                                                <td> --}}
+                                                    {{-- <a href="{{ route('admin.mobil.edit', $mobil->id) }}"
                                                         class="btn btn-success">
                                                         <i class="fas fa-edit"></i></a>
                                                     <form action="{{ route('admin.mobil.delete', $mobil->id) }}"
@@ -328,7 +328,7 @@
                                                         <button type="submit" class="btn btn-danger">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
-                                                    </form>
+                                                    </form> --}}
 
                                                 </td>
                                             </tr>

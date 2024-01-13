@@ -6,6 +6,7 @@ use App\Models\Sewa;
 use App\Models\User;
 use App\Models\Mobil;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
@@ -93,23 +94,27 @@ class AdminController extends Controller
         return redirect('/dashboard/home');
     }
 
+
     public function transaction()
     {
         $user_ids = Sewa::pluck('user_id')->unique();
         $mobil_ids = Mobil::pluck('id')->unique();
         $sewa = Sewa::all();
+        $user = Auth::user();
 
-        $data = [
+        // Gabungkan data menjadi satu tabel
+        $mergedData = new Collection([
             'user_ids' => $user_ids,
             'mobil_ids' => $mobil_ids,
             'sewa' => $sewa,
-        ];
+        ]);
 
-        dd($data);
-        return view('admin.alltransaction', ['data' => $data]);
+        // Tampilkan hasil
+        // dd($mergedData->all());
 
-
+        return view('admin.alltransaksi', ['datas' => $mergedData, 'user' => $user]);
     }
+
 
     public function all()
     {

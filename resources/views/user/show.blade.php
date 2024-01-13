@@ -23,7 +23,8 @@
                 <p
                     class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600  ">
                     Merk : {{ $mobil->merk }}</p>
-                <h2 class="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">Model : {{ $mobil->model }}</h2>
+                <h2 class="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">Model :
+                    {{ $mobil->model }}</h2>
 
 
 
@@ -31,24 +32,81 @@
                     Status : {{ $mobil->status }}</p>
                 <p class="font-normal text-base leading-6 text-gray-600  mt-7">
                     Ready Dari Tanggal : {{ $mobil->tanggal_awal_ready }} Sampai {{ $mobil->tanggal_akhir_ready }}</p>
-                <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6">Tarif : Rp.{{ $mobil->tarif }}</p>
+                <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6">
+                    Tarif per Hari : Rp.{{ number_format($mobil->tarif, 0, ',', '.') }}
+                </p>
 
-                <div class="lg:mt-11 mt-10">
-                    <div class="flex flex-col justify-between">
-                        <p class="font-medium text-base leading-4 text-gray-600 ">Select quantity</p>
-                        <div class="flex justify-between my-3">
 
-                            <input type="date" name="tanggal_awal_pinjam" id="tanggal_awal_pinjam" width="100%">
-                            <input type="date" name="tanggal_awal_pinjam" id="tanggal_awal_pinjam" width="100%">
+                <form action="{{ route('user.sewa', $mobil->id) }}" method="POST">
+                    @csrf
+
+                    <div class="lg:mt-11 mt-10">
+                        <div class="flex flex-col justify-between">
+                            <p class="font-medium text-base leading-4 text-gray-600">Select quantity</p>
+                            <div class="flex justify-between my-3">
+                                <input type="date" name="awal_sewa" id="awal_sewa" width="100%">
+                                <input type="date" name="akhir_sewa" id="akhir_sewa" width="100%">
+
+                            </div>
                         </div>
+                        <hr class="bg-gray-200 w-full my-2" />
                     </div>
-                    <hr class="bg-gray-200 w-full my-2" />
-                </div>
 
-                <button
-                    class="focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6 ">
-                Pinjam Mobil
-                </button>
+                    <div id="result"></div> <!-- Ini adalah tempat untuk menampilkan hasil perhitungan -->
+
+                    @if ($mobil->status == 'Ready')
+                        <button type="submit"
+                            class="focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6">
+                            Pinjam Mobil
+                        </button>
+                    @elseif ($mobil->status == 'Disewa')
+                        <button disabled
+                            class="focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6">
+                            Mobil Sedang Di Sewa
+                        </button>
+                    @else
+                        <button type="submit"
+                            class="focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6">
+                            Pinjam Mobil
+                        </button>
+                    @endif
+
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const awalSewaInput = document.getElementById('awal_sewa');
+                            const akhirSewaInput = document.getElementById('akhir_sewa');
+                            const resultContainer = document.getElementById('result');
+
+                            awalSewaInput.addEventListener('input', updateHarga);
+                            akhirSewaInput.addEventListener('input', updateHarga);
+
+                            function formatToRupiah(value) {
+                                return 'Rp ' + new Intl.NumberFormat('id-ID').format(value);
+                            }
+
+                            function updateHarga() {
+                                const awalSewa = new Date(awalSewaInput.value);
+                                const akhirSewa = new Date(akhirSewaInput.value);
+
+                                if (akhirSewa <= awalSewa) {
+                                    resultContainer.innerHTML = 'Tanggal Akhir Sewa harus setelah Tanggal Awal Sewa';
+                                    return;
+                                }
+
+                                const selisihHari = Math.ceil((akhirSewa - awalSewa) / (1000 * 60 * 60 * 24));
+
+                                const tarifPerHari = {{ $mobil->tarif }};
+                                const totalHarga = selisihHari * tarifPerHari;
+
+                                const formattedHarga = formatToRupiah(totalHarga);
+                                resultContainer.innerHTML = `Total Harga: ${formattedHarga}`;
+                            }
+                        });
+                    </script>
+
+                </form>
+
             </div>
 
             <!-- Preview Images Div For larger Screen-->
