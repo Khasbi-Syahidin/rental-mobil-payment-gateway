@@ -908,59 +908,25 @@
                             </li>
                         </ul>
                         <div class="pl-40">
-                            <button role="button" aria-label="live chat"
-                                class="focus:bg-indigo-600 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 hover:bg-indigo-600 text-white px-6 py-2 font-semibold rounded focus:outline-none">Live
-                                Chat</button>
+                            <a href="{{ route('login') }}">
+                                <button role="button" aria-label="live chat"
+                                    class="focus:bg-indigo-600 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 hover:bg-indigo-600 text-white px-6 py-2 font-semibold rounded focus:outline-none">Login/Register</button>
+                            </a>
                         </div>
                     </div>
                 </div>
             </nav>
-            <div class="pt-32 lg:flex items-center relative z-10 container mx-auto">
+            <div class="pt-32 md:pb-32 pb-20 lg:flex items-center relative z-10 container mx-auto">
                 <div class="w-full lg:w-1/2 h-full lg:pr-10 xl:pr-0">
                     <img tabindex="0" role="img" aria-label="people smiling" class="mx-auto"
-                        src="{{ asset('image/mobil.png')}}" alt="people smiling" />
+                        src="{{ asset('image/mobil.png') }}" alt="people smiling" />
                 </div>
-                <div role="contentinfo" class="w-full lg:w-1/2 h-full">
-                    <p tabindex="0" class="text-indigo-700 uppercase text-1xl mb-4">Sewa Mobil Jadi Lebih Mudah bersama</p>
-                    <h1 tabindex="0" class="text-indigo-700 text-5xl lg:text-6xl font-black mb-8">Sewa Mobil Bogor</h1>
-                    <p tabindex="0" class="text-gray-800 dark:text-white font-regular mb-8">COMBINING SCIENCE WITH
-                        BEAUTY. L'Oreal Paris offerincare products is developed and rigorously tested with leading
-                        scientists. Indulge yourself in a luxurious and sensorial skincare experience. Cutting-edge
-                        innovations, proven by Science.</p>
-                    <div
-                        class="bg-white lg:mt-16 py-4 px-4 flex flex-col sm:flex-row justify-start sm:justify-between items-start sm:items-center shadow-lg rounded-lg">
-                        <div class="sm:flex items-center py-2">
-                            <div class="flex items-center">
-                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/right_aligned_with_searchbar_Svg4.svg"
-                                    alt="icon" />
-                                <input aria-label="Doctor name"
-                                    class="w-24 xl:w-32 leading-none tracking-normal text-gray-800 dark:text-white ml-2.5 placeholder-black"
-                                    placeholder="Doctor Name" />
-                            </div>
-                            <div class="flex items-center sm:mx-4 xl:mx-14 my-6 lg:my-0">
-                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/right_aligned_with_searchbar_Svg5.svg"
-                                    alt="icon" />
-                                <input aria-label="zip code"
-                                    class="w-24 xl:w-32 leading-none tracking-normal text-gray-800 dark:text-white ml-2.5 placeholder-black"
-                                    placeholder="Zip code" />
-                            </div>
-                            <div class="flex items-center">
-                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/right_aligned_with_searchbar_Svg6.svg"
-                                    alt="icon" />
-                                <input aria-label="insurance"
-                                    class="w-24 xl:w-32 leading-none tracking-normal text-gray-800 dark:text-white ml-2.5 placeholder-black"
-                                    placeholder="Insurance" />
-                            </div>
-                        </div>
-                        <button role="button" aria-label="search"
-                            class="focus:bg-indigo-700 focus:ring-indigo-700 focus:ring-2 focus:ring-offset-2 text-white bg-indigo-600 hover:bg-indigo-700 mt-4 sm:mt-0 p-3 lg:-ml-8 rounded w-full sm:w-auto relative">
-                            <img class="absolute right-0 mr-2 sm:mr-auto sm:relative icon icon-tabler icon-tabler-search cursor-pointer"
-                                src="https://tuk-cdn.s3.amazonaws.com/can-uploader/right_aligned_with_searchbar_Svg7.svg"
-                                alt="search" />
-                            <input aria-label="search"
-                                class="sm:hidden border-b border-gray-300 w-full bg-transparent pr-6" />
-                        </button>
-                    </div>
+                <div role="contentinfo" class="w-full lg:w-1/2 h-full pl-4 md:pl-12">
+                    <p tabindex="0" class="text-indigo-700 uppercase text-1xl mb-4">Sewa Mobil Jadi Lebih Mudah
+                        bersama</p>
+                    <h1 tabindex="0" class="text-indigo-700 text-5xl lg:text-6xl font-black mb-8">Sewa Mobil Bogor
+                    </h1>
+
                 </div>
             </div>
         </div>
@@ -971,72 +937,65 @@
             <div class="flex flex-col">
                 <div class="flex flex-col justify-center">
                     <div class="relative">
-                        <img class="hidden sm:block w-full"
-                            src="https://i.ibb.co/HxXSY0j/jason-wang-Nx-Awry-Abt-Iw-unsplash-1-1.png"
+                        <img class="sm:block w-full"
+                            src="{{ asset('image/iklan.png')}}"
                             alt="sofa" />
-                        <img class="sm:hidden w-full"
-                            src="https://i.ibb.co/B6qwqPT/jason-wang-Nx-Awry-Abt-Iw-unsplash-1.png" alt="sofa" />
-                        <div
-                            class="absolute sm:bottom-8 bottom-4 pr-10 sm:pr-0 left-4 sm:left-8 flex justify-start items-start">
-                            <p class="text-3xl sm:text-4xl font-semibold leading-9 text-white">Range Comfort Sofas</p>
-                        </div>
                     </div>
                 </div>
                 <div class="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
-                    @foreach($mobils as $mobil)
-                    <div
-                        class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 sm:p-2 py-3 px-1 flex justify-center items-center">
-                        <img class="group-hover:opacity-60 transition duration-500"
-                            src="{{ $mobil->image }}"
-                            alt="sofa-2" />
+                    @foreach ($mobils as $mobil)
                         <div
-                            class="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
-                            <div>
-                                <p
-                                    class="group-hover:opacity-60 transition duration-500 text-xl leading-5 text-gray-600 dark:text-white">
-                                    {{ $mobil->merk}}</p>
+                            class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:hover:bg-gray-700 sm:p-2 py-3 px-1 flex justify-center items-center">
+                            <img class="group-hover:opacity-60 transition duration-500" src="{{ $mobil->image }}"
+                                alt="sofa-2" />
+                            <div
+                                class="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
+                                <div>
+                                    <p
+                                        class="group-hover:opacity-60 transition duration-500 text-xl leading-5 text-gray-600 dark:text-white">
+                                        {{ $mobil->merk }}</p>
+                                </div>
+                                <div>
+                                    <p
+                                        class="group-hover:opacity-60 transition duration-500 text-xl font-semibold leading-5 text-gray-800 dark:text-white">
+                                        {{ $mobil->tarif }}</p>
+                                </div>
                             </div>
-                            <div>
-                                <p
-                                    class="group-hover:opacity-60 transition duration-500 text-xl font-semibold leading-5 text-gray-800 dark:text-white">
-                                    $78900</p>
+                            <div
+                                class="group-hover:opacity-60 transition duration-500 absolute bottom-8 right-8 flex justify-start items-start flex-row space-x-2">
+                                <button
+                                    class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
+                                <button
+                                    class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
+                            </div>
+                            <div
+                                class="flex flex-col bottom-8 left-8 space-y-4 absolute opacity-0 group-hover:opacity-100 transition duration-500">
+                                <button>
+                                    <img class="dark:hidden"
+                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1.svg"
+                                        alt="add">
+                                    <img class="hidden dark:block"
+                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1dark.svg"
+                                        alt="add">
+                                </button>
+                                <button>
+                                    <img class="dark:hidden"
+                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2.svg"
+                                        alt="view">
+                                    <img class="hidden dark:block"
+                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2dark.svg"
+                                        alt="view">
+                                </button>
+                                <button>
+                                    <img class="dark:hidden"
+                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3.svg"
+                                        alt="like">
+                                    <img class="hidden dark:block"
+                                        src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3dark.svg"
+                                        alt="like" />
+                                </button>
                             </div>
                         </div>
-                        <div
-                            class="group-hover:opacity-60 transition duration-500 absolute bottom-8 right-8 flex justify-start items-start flex-row space-x-2">
-                            <button
-                                class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
-                            <button
-                                class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
-                        </div>
-                        <div
-                            class="flex flex-col bottom-8 left-8 space-y-4 absolute opacity-0 group-hover:opacity-100 transition duration-500">
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1.svg"
-                                    alt="add">
-                                <img class="hidden dark:block"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1dark.svg"
-                                    alt="add">
-                            </button>
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2.svg"
-                                    alt="view">
-                                <img class="hidden dark:block"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2dark.svg"
-                                    alt="view">
-                            </button>
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3.svg"
-                                    alt="like">
-                                <img class="hidden dark:block"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3dark.svg"
-                                    alt="like" />
-                            </button>
-                        </div>
-                    </div>
                     @endforeach
                 </div>
                 <div class="flex justify-end items-end mt-12">
