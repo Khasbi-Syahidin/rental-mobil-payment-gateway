@@ -281,70 +281,56 @@
 
             <!-- Main content -->
             <section class="content">
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Mobil Baru</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <!-- form start -->
-                    <form action="{{ route('admin.mobil.store') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Merk Mobil</label>
-                                <input type="text" class="form-control" id="merk" name="merk"
-                                    placeholder="Masukkan Merk Mobil">
-                            </div>
-                            <div class="form-group">
-                                <label for="model">Model</label>
-                                <input type="text" class="form-control" id="model" name="model"
-                                    placeholder="Masukkan Model Mobil">
-                            </div>
-                            <div class="form-group">
-                                <label for="nomor_plat">Nomor Plat</label>
-                                <input type="text" class="form-control" id="nomor_plat" name="nomor_plat"
-                                    placeholder="Masukkan Nomor Plat Mobil">
-                            </div>
-                            <div class="form-group">
-                                <label for="model">Tarif</label>
-                                <input type="text" class="form-control" id="model" name="tarif"
-                                    placeholder="Masukkan Tarif">
-                            </div>
-                            <div class="form-group">
-                                <label for="status">Status</label>
-                                <input type="text" class="form-control" id="status" name="status"
-                                    placeholder="Masukkan Status Mobil">
-                            </div>
-                            <div class="form-group">
-                                <label for="model">Tanggal Awal Ready</label>
-                                <input type="date" class="form-control" id="model" name="tanggal_awal_ready"
-                                    placeholder="Masukkan Tanggal Awal Ready">
-                            </div>
-                            <div class="form-group">
-                                <label for="model">Tanggal Akhir Ready</label>
-                                <input type="date" class="form-control" id="model" name="tanggal_akhir_ready"
-                                    placeholder="Masukkan Tanggal Akhir Ready">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputFile">File input</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile"
-                                            name="image">
-                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">Upload</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Data Mobil</h3>
 
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Merk</th>
+                                            <th>Model</th>
+                                            <th>Nomor Plat</th>
+                                            <th>Tarif</th>
+                                            <th>Status</th>
+                                            <th>Awal Ready</th>
+                                            <th>Akhir Ready</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php $no = 1 @endphp
+                                        @foreach ($mobils as $mobil)
+                                            <tr>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ $mobil->merk }}</td>
+                                                <td>{{ $mobil->model }}</td>
+                                                <td>{{ $mobil->nomor_plat }}</td>
+                                                <td>{{ $mobil->tarif }}</td>
+                                                <td>{{ $mobil->status }}</td>
+                                                <td>{{ $mobil->tanggal_awal_ready }}</td>
+                                                <td>{{ $mobil->tanggal_akhir_ready }}</td>
+                                                <td>
+                                                    <a href="{{ route('admin.mobil.edit', $mobil->id) }}" class="btn btn-success">
+                                                        <i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('admin.mobil.delete', $mobil->id) }}" class="btn btn-danger">
+                                                        <i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
                         </div>
-                    </form>
+                        <!-- /.card -->
+                    </div>
                 </div>
             </section>
             <!-- /.content -->

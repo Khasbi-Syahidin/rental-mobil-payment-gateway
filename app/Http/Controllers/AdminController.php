@@ -11,22 +11,24 @@ use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $mobil = Mobil::all();
-        $user = User::all()->first();
+        $user = Auth::user();
         $sewa = Sewa::all();
         // dd($user);
-        return view('admin.dashboard', ['mobil' => $mobil, 'user' => $user, 'sewa' => $sewa ]);
-
+        return view('admin.dashboard', ['mobil' => $mobil, 'user' => $user, 'sewa' => $sewa]);
     }
 
-    public function create(){
+    public function create()
+    {
         $user = Auth::user();
 
-        return view('admin.addmobil', [ 'user' => $user]);
+        return view('admin.addmobil', ['user' => $user]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $mobil = new Mobil();
         $mobil->merk = $request->merk;
@@ -47,12 +49,14 @@ class AdminController extends Controller
         return redirect('/dashboard/home');
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $mobil = Mobil::find($id);
         return view('admin.edit', ['mobil' => $mobil]);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $mobil = Mobil::find($id);
         $mobil->merk = $request->merk;
         $mobil->model = $request->model;
@@ -77,7 +81,8 @@ class AdminController extends Controller
         return redirect('/dashboard');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $mobil = Mobil::find($id);
 
         if (File::exists(public_path($mobil->image))) {
@@ -86,5 +91,21 @@ class AdminController extends Controller
 
         $mobil->delete();
         return redirect('/dashboard');
+    }
+
+    public function transaction()
+    {
+        $sewa = Sewa::all();
+        $user = User::all($sewa->user_id());
+        $mobil = Mobil::all($sewa->mobil_id());
+
+        $data = compact('sewa', 'user', 'mobil');
+        return view('admin.transaction', ['data' => $data]);
+    }
+
+    public function all()
+    {
+        $mobils = Mobil::all();
+        return view('admin.allmobil', ['mobils' => $mobils, 'user' => Auth::user()]);
     }
 }

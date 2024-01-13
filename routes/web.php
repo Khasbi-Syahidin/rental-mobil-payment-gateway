@@ -39,11 +39,13 @@ Route::prefix('/')->middleware(['auth', 'user'])->name('user.')->group(function 
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
     Route::get('/home', [AdminController::class, 'index'])->name('dashboard');
-    Route::get('/mobilcreate', [AdminController::class, 'create']);
+    Route::get('/mobilcreate', [AdminController::class, 'create'])->name('mobil.create');
     Route::post('/mobilstore', [AdminController::class, 'store'])->name('mobil.store');
-    Route::post('/editmobil/{id}', [AdminController::class, 'edit']);
+    Route::get('/editmobil/{id}', [AdminController::class, 'edit'])->name('mobil.edit');
     Route::post('/updatemobil/{id}', [AdminController::class, 'update']);
-    Route::delete('delete/{id}', [AdminController::class, 'delete']);
+    Route::get('/index', [AdminController::class, 'all'])->name('mobil.index');
+    Route::get('/transaction', [AdminController::class, 'transaction'])->name('transaction');
+    Route::delete('delete/{id}', [AdminController::class, 'delete'])->name('mobil.delete');
 });
 
 
