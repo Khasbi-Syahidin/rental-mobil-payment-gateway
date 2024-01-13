@@ -918,12 +918,11 @@
             <div class="pt-32 lg:flex items-center relative z-10 container mx-auto">
                 <div class="w-full lg:w-1/2 h-full lg:pr-10 xl:pr-0">
                     <img tabindex="0" role="img" aria-label="people smiling" class="mx-auto"
-                        src="https://cdn.tuk.dev/assets/templates/weCare/hero2-left.png" alt="people smiling" />
+                        src="{{ asset('image/mobil.png')}}" alt="people smiling" />
                 </div>
                 <div role="contentinfo" class="w-full lg:w-1/2 h-full">
-                    <p tabindex="0" class="text-indigo-700 uppercase text-2xl mb-4">Qusique Tincidun sapien</p>
-                    <h1 tabindex="0" class="text-indigo-700 text-4xl lg:text-6xl font-black mb-8">All natural
-                        ingredients</h1>
+                    <p tabindex="0" class="text-indigo-700 uppercase text-1xl mb-4">Sewa Mobil Jadi Lebih Mudah bersama</p>
+                    <h1 tabindex="0" class="text-indigo-700 text-5xl lg:text-6xl font-black mb-8">Sewa Mobil Bogor</h1>
                     <p tabindex="0" class="text-gray-800 dark:text-white font-regular mb-8">COMBINING SCIENCE WITH
                         BEAUTY. L'Oreal Paris offerincare products is developed and rigorously tested with leading
                         scientists. Indulge yourself in a luxurious and sensorial skincare experience. Cutting-edge
@@ -984,131 +983,18 @@
                     </div>
                 </div>
                 <div class="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
+                    @foreach($mobils as $mobil)
                     <div
-                        class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 sm:p-28 py-36 px-10 flex justify-center items-center">
+                        class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 sm:p-2 py-3 px-1 flex justify-center items-center">
                         <img class="group-hover:opacity-60 transition duration-500"
-                            src="https://i.ibb.co/q79KfQr/pexels-pixabay-276583-removebg-preview-1.png"
+                            src="{{ $mobil->image }}"
                             alt="sofa-2" />
                         <div
                             class="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
                             <div>
                                 <p
                                     class="group-hover:opacity-60 transition duration-500 text-xl leading-5 text-gray-600 dark:text-white">
-                                    Sectional Sofa</p>
-                            </div>
-                            <div>
-                                <p
-                                    class="group-hover:opacity-60 transition duration-500 text-xl font-semibold leading-5 text-gray-800 dark:text-white">
-                                    $78900</p>
-                            </div>
-                        </div>
-                        <div
-                            class="group-hover:opacity-60 transition duration-500 absolute bottom-8 right-8 flex justify-start items-start flex-row space-x-2">
-                            <button
-                                class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
-                            <button
-                                class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
-                        </div>
-                        <div
-                            class="flex flex-col bottom-8 left-8 space-y-4 absolute opacity-0 group-hover:opacity-100 transition duration-500">
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1.svg"
-                                    alt="add">
-                                <img class="hidden dark:block"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1dark.svg
-
-"
-                                    alt="add">
-                            </button>
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2.svg"
-                                    alt="view">
-                                <img class="hidden dark:block"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2dark.svg"
-                                    alt="view">
-                            </button>
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3.svg"
-                                    alt="like">
-                                <img class="hidden dark:block"
-                                    src="
-https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3dark.svg"
-                                    alt="like" />
-                            </button>
-                        </div>
-                    </div>
-
-                    <div
-                        class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 sm:p-28 py-36 px-10 flex justify-center items-center">
-                        <img class="group-hover:opacity-60 transition duration-500"
-                            src="https://i.ibb.co/3BbZvtQ/pexels-andrea-piacquadio-3757055-removebg-preview-1.png"
-                            alt="sofa-3" />
-                        <div
-                            class="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
-                            <div>
-                                <p
-                                    class="group-hover:opacity-60 transition duration-500 text-xl leading-5 text-gray-600 dark:text-white">
-                                    Two Seater Sofa</p>
-                            </div>
-                            <div>
-                                <p
-                                    class="group-hover:opacity-60 transition duration-500 text-xl font-semibold leading-5 text-gray-800 dark:text-white">
-                                    $2900</p>
-                            </div>
-                        </div>
-                        <div
-                            class="group-hover:opacity-60 transition duration-500 absolute bottom-8 right-8 flex justify-start items-start flex-row space-x-2">
-                            <button
-                                class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
-                            <button
-                                class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
-                        </div>
-                        <div
-                            class="flex flex-col bottom-8 left-8 space-y-4 absolute opacity-0 group-hover:opacity-100 transition duration-500">
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1.svg"
-                                    alt="add">
-                                <img class="hidden dark:block"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1dark.svg
-
-"
-                                    alt="add">
-                            </button>
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2.svg"
-                                    alt="view">
-                                <img class="hidden dark:block"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2dark.svg"
-                                    alt="view">
-                            </button>
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3.svg"
-                                    alt="like">
-                                <img class="hidden dark:block"
-                                    src="
-                            https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3dark.svg"
-                                    alt="like" />
-                            </button>
-                        </div>
-                    </div>
-
-                    <div
-                        class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 sm:p-28 py-36 px-10 flex justify-center items-center">
-                        <img class="group-hover:opacity-60 transition duration-500"
-                            src="https://i.ibb.co/DgFfGcm/paul-weaver-n-Wid-MEQsn-AQ-unsplash-removebg-preview-1.png"
-                            alt="sofa-4" />
-                        <div
-                            class="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
-                            <div>
-                                <p
-                                    class="group-hover:opacity-60 transition duration-500 text-xl leading-5 text-gray-600 dark:text-white">
-                                    Sectional Sofa</p>
+                                    {{ $mobil->merk}}</p>
                             </div>
                             <div>
                                 <p
@@ -1151,182 +1037,7 @@ https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3dark.svg"
                             </button>
                         </div>
                     </div>
-
-                    <div
-                        class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 sm:p-28 py-36 px-10 flex justify-center items-center">
-                        <img class="group-hover:opacity-60 transition duration-500"
-                            src="https://i.ibb.co/K6PL38P/pexels-pixabay-276566-removebg-preview-1.png"
-                            alt="sofa-5" />
-                        <div
-                            class="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
-                            <div>
-                                <p
-                                    class="group-hover:opacity-60 transition duration-500 text-xl leading-5 text-gray-600 dark:text-white">
-                                    Sectional Sofa</p>
-                            </div>
-                            <div>
-                                <p
-                                    class="group-hover:opacity-60 transition duration-500 text-xl font-semibold leading-5 text-gray-800 dark:text-white">
-                                    $78900</p>
-                            </div>
-                        </div>
-                        <div
-                            class="group-hover:opacity-60 transition duration-500 absolute bottom-8 right-8 flex justify-start items-start flex-row space-x-2">
-                            <button
-                                class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
-                            <button
-                                class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
-                        </div>
-                        <div
-                            class="flex flex-col bottom-8 left-8 space-y-4 absolute opacity-0 group-hover:opacity-100 transition duration-500">
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1.svg"
-                                    alt="add">
-                                <img class="hidden dark:block"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1dark.svg
-
-"
-                                    alt="add">
-                            </button>
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2.svg"
-                                    alt="view">
-                                <img class="hidden dark:block"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2dark.svg"
-                                    alt="view">
-                            </button>
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3.svg"
-                                    alt="like">
-                                <img class="hidden dark:block"
-                                    src="
-https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3dark.svg"
-                                    alt="like" />
-                            </button>
-                        </div>
-                        <div class="absolute top-4 right-6">
-                            <p
-                                class="text-base leading-4 pb-0.5 text-gray-600 dark:text-white border-b-2 border-gray-600">
-                                New</p>
-                        </div>
-                    </div>
-
-                    <div
-                        class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 sm:p-28 py-36 px-10 flex justify-center items-center">
-                        <img class="group-hover:opacity-60 transition duration-500"
-                            src="https://i.ibb.co/zP9sWqP/phillip-goldsberry-f-Zule-Efe-A1-Q-unsplash-1-removebg-preview-1.png"
-                            alt="sofa-6" />
-                        <div
-                            class="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
-                            <div>
-                                <p
-                                    class="group-hover:opacity-60 transition duration-500 text-xl leading-5 text-gray-600 dark:text-white">
-                                    Sectional Sofa</p>
-                            </div>
-                            <div>
-                                <p
-                                    class="group-hover:opacity-60 transition duration-500 text-xl font-semibold leading-5 text-gray-800 dark:text-white">
-                                    $78900</p>
-                            </div>
-                        </div>
-                        <div
-                            class="group-hover:opacity-60 transition duration-500 absolute bottom-8 right-8 flex justify-start items-start flex-row space-x-2">
-                            <button
-                                class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
-                            <button
-                                class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
-                        </div>
-                        <div
-                            class="flex flex-col bottom-8 left-8 space-y-4 absolute opacity-0 group-hover:opacity-100 transition duration-500">
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1.svg"
-                                    alt="add">
-                                <img class="hidden dark:block"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1dark.svg
-
-"
-                                    alt="add">
-                            </button>
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2.svg"
-                                    alt="view">
-                                <img class="hidden dark:block"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2dark.svg"
-                                    alt="view">
-                            </button>
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3.svg"
-                                    alt="like">
-                                <img class="hidden dark:block"
-                                    src="
-https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3dark.svg"
-                                    alt="like" />
-                            </button>
-                        </div>
-                    </div>
-
-                    <div
-                        class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 sm:p-28 py-36 px-10 flex justify-center items-center">
-                        <img class="group-hover:opacity-60 transition duration-500"
-                            src="https://i.ibb.co/SPyYgjw/pexels-martin-p-chy-1866149-removebg-preview-1.png"
-                            alt="sofa-7" />
-                        <div
-                            class="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
-                            <div>
-                                <p
-                                    class="group-hover:opacity-60 transition duration-500 text-xl leading-5 text-gray-600 dark:text-white">
-                                    Sectional Sofa</p>
-                            </div>
-                            <div>
-                                <p
-                                    class="group-hover:opacity-60 transition duration-500 text-xl font-semibold leading-5 text-gray-800 dark:text-white">
-                                    $78900</p>
-                            </div>
-                        </div>
-                        <div
-                            class="group-hover:opacity-60 transition duration-500 absolute bottom-8 right-8 flex justify-start items-start flex-row space-x-2">
-                            <button
-                                class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
-                            <button
-                                class="bg-white border rounded-full focus:bg-gray-800 border-gray-600 p-1.5"></button>
-                        </div>
-                        <div
-                            class="flex flex-col bottom-8 left-8 space-y-4 absolute opacity-0 group-hover:opacity-100 transition duration-500">
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1.svg"
-                                    alt="add">
-                                <img class="hidden dark:block"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1dark.svg
-
-"
-                                    alt="add">
-                            </button>
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2.svg"
-                                    alt="view">
-                                <img class="hidden dark:block"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2dark.svg"
-                                    alt="view">
-                            </button>
-                            <button>
-                                <img class="dark:hidden"
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3.svg"
-                                    alt="like">
-                                <img class="hidden dark:block"
-                                    src="
-https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3dark.svg"
-                                    alt="like" />
-                            </button>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="flex justify-end items-end mt-12">
                     <div class="flex flex-row items-center justify-center space-x-8">

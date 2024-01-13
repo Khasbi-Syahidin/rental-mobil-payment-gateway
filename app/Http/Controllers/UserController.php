@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function index(){
-        return view('welcome');
+        $mobils = Mobil::all();
+        return view('welcome', ['mobils' => $mobils]);
     }
 
     public function show($id){
@@ -22,7 +23,8 @@ class UserController extends Controller
         $mobil = Mobil::find($id);
         $user_id = Auth::user()->id;
 
-        
+
+
         return view('user.pinjam', ['mobil' => $mobil]);
     }
 
@@ -32,5 +34,5 @@ class UserController extends Controller
 
         return view('user.showUser', ['data_pinjam' => $data_pinjam]);
     }
-    
+
 }
