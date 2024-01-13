@@ -17,10 +17,9 @@
 
             <div class="w-full sm:w-96 md:w-8/12 lg:w-6/12 items-center">
                 <p
-                    class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600  dark:text-white">
+                    class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-600  ">
                     Home / Furniture / Wooden Stool</p>
-                <h2
-                    class="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 dark:text-white mt-4">
+                <h2 class="font-semibold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 mt-4">
                     Wooden Stool</h2>
 
                 <div class="flex flex-row justify-between mt-5">
@@ -29,7 +28,7 @@
                     <img class="hidden dark:block"
                         src="https://tuk-cdn.s3.amazonaws.com/can-uploader/productDetail4-svg1dark.svg" alt="stars">
                     <p
-                        class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-700 hover:underline hover:text-gray-800 dark:text-white duration-100 cursor-pointer">
+                        class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 font-normal text-base leading-4 text-gray-700 hover:underline hover:text-gray-800 duration-100 cursor-pointer">
                         22 reviews</p>
                 </div>
 
@@ -43,12 +42,12 @@
                         <p class="font-medium text-base leading-4 text-gray-600 ">Select quantity</p>
                         <div class="flex">
                             <span onclick="minus()"
-                                class="focus:outline-none dark:text-white focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-r-0 w-7 h-7 flex items-center justify-center pb-1">-</span>
+                                class="focus:outline-none  focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-r-0 w-7 h-7 flex items-center justify-center pb-1">-</span>
                             <input id="counter" aria-label="input"
-                                class="border dark:text-white border-gray-300 dark:bg-transparent h-full text-center w-14 pb-1"
+                                class="border  border-gray-300 dark:bg-transparent h-full text-center w-14 pb-1"
                                 type="text" value="1" />
                             <span onclick="plus()"
-                                class="focus:outline-none dark:text-white focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-l-0 w-7 h-7 flex items-center justify-center pb-1">+</span>
+                                class="focus:outline-none  focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer border border-gray-300 border-l-0 w-7 h-7 flex items-center justify-center pb-1">+</span>
                         </div>
                     </div>
                     <hr class="bg-gray-200 w-full my-2" />
@@ -72,7 +71,7 @@
             <!-- Preview Images Div For larger Screen-->
 
             <div class="w-full sm:w-96 md:w-8/12 lg:w-6/12 flex lg:flex-row flex-col lg:gap-8 sm:gap-6 gap-4">
-                <img src="{{ asset('image/mobil/' . $mobil->image) }}" alt="">
+                <img src="{{ asset('mobil/1705145229.png') }}" alt="">
             </div>
         </div>
     </div>

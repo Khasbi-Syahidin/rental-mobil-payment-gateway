@@ -96,7 +96,7 @@ class AdminController extends Controller
     public function transaction()
     {
         $user_ids = Sewa::pluck('user_id')->unique();
-        $mobil_ids = Mobil::pluck('mobil_id')->unique();
+        $mobil_ids = Mobil::pluck('id')->unique();
         $sewa = Sewa::all();
 
         $data = [
