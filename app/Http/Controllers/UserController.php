@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sewa;
+use App\Models\User;
 use App\Models\Mobil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -70,4 +71,35 @@ class UserController extends Controller
 
         return view('user.search', ['mobils' => $mobils]);
     }
+
+    public function profile()
+    {
+        $user = Auth::user();
+        $sewas = Sewa::where('user_id', $user->id)->get();
+
+        // Menggunakan loop untuk mendapatkan mobil dan tanggal terkait untuk setiap sewa
+        $dataSewas = [];
+        foreach ($sewas as $sewa) {
+            $mobil = Mobil::find($sewa->mobil_id);
+            if ($mobil) {
+                $dataSewas[] = [
+                    'merk' => $mobil->merk,
+                    'model' => $mobil->model,
+                    'awal_sewa' => $sewa->awal_sewa, // Sesuaikan dengan nama kolom awal_sewa di tabel Sewa
+                    'akhir_sewa' => $sewa->akhir_sewa,
+                    'status' => $sewa->status, // Sesuaikan dengan nama kolom tanggal di tabel Sewa
+                ];
+            }
+        }
+
+        // dd($dataSewas);
+
+        return view('user.profile', ['user' => $user, 'dataSewas' => $dataSewas]);
+    }
+
+    public function edit(){
+        $user = Auth::user();
+        return view('user.edit', ['user' => $user]);
+    }
+
 }
