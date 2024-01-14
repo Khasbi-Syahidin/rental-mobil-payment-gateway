@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('alamat')->nullable();
             $table->string('telp')->nullable();
             $table->string('nomor_sim')->nullable();
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

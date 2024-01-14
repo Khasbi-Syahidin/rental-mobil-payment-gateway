@@ -40,6 +40,7 @@ Route::prefix('/')->middleware(['auth', 'user'])->name('user.')->group(function 
     Route::post('/sewa/{id}', [UserController::class, 'sewa'])->name('sewa');
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
     Route::get('/edit', [UserController::class, 'edit'])->name('edit');
+    Route::post('/update', [UserController::class, 'update'])->name('update');
     // require __DIR__ . '/user.php';
 });
 

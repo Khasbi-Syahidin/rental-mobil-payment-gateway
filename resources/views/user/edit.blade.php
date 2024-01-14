@@ -26,7 +26,8 @@
                                 Edit Profile
                             </p>
                         </div>
-                        <form onSubmit={submit} encType="multipart/form-data" method="put">
+                        <form action="{{ route('user.update') }}" enctype="multipart/form-data" method="post">
+                            @csrf
                             <div class="px-4 md:px-10 pt-6 md:pt-12 md:pb-4 pb-7">
                                 <div class="px-4 md:px-10  pt-6 md:pt-12 md:pb-4 pb-7">
                                     <a href="#" id="profile-link" class="flex justify-center">
@@ -43,7 +44,7 @@
                                             @endif
                                         </div>
                                     </a>
-                                    <input type="file" id="input-image" style="display: none;" />
+                                    <input type="file" id="input-image" style="display: none;" name="image" />
                                 </div>
                                 <script>
                                     document.addEventListener('DOMContentLoaded', function() {
@@ -76,46 +77,49 @@
                                 <div class="mt-11 flex flex-col md:flex-col sm:flex-col gap-4">
                                     <div class="flex items-center">
                                         <input placeholder="Name" id="name" type="text" name="name"
+                                            value="{{ old('name', $user->name) }}"
                                             class="flex w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white border rounded border-gray-200">
                                     </div>
                                     <div class="flex items-center">
-                                        <select id="gender" name="gender"
-                                            class="flex w-full focus:outline-none py-3 px-3 text-sm leading-none text-gray-800 bg-white border rounded border-gray-200">
-                                            <option value="" disabled selected hidden>
-                                                Pilih Gender
-                                            </option>
-                                            <option value="Laki-laki">
-                                                Laki-laki
-                                            </option>
-                                            <option value="Perempuan">
-                                                Perempuan
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input placeholder="Phone" id="phone" type="text" name="phone"
+                                        <input placeholder="Email" id="email" type="email" name="email"
+                                            value="{{ old('email', $user->email) }}"
                                             class="flex w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white border rounded border-gray-200">
                                     </div>
                                     <div class="flex items-center">
-                                        <input placeholder="NISN" id="NISN" type="text" name="NISN"
+                                        <input placeholder="Password" id="password" type="password" name="password"
+                                            value="{{ old('password') }}"
+                                            class="flex w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white border rounded border-gray-200">
+
+                                        @if (!empty(old('password')))
+                                            <input type="hidden" name="password" value="{{ old('password') }}">
+                                        @endif
+                                    </div>
+
+
+                                    <div class="flex items-center">
+                                        <input placeholder="Phone" id="phone" type="number" name="telp"
+                                            value="{{ old('telp', $user->telp) }}"
                                             class="flex w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white border rounded border-gray-200">
                                     </div>
                                     <div class="flex items-center">
-                                        <input placeholder="TTL" type="date" id="TTL" name="TTL"
+                                        <input placeholder="Nomor Sim" id="nomor_sim" type="text" name="nomor_sim"
+                                            value="{{ old('nomor_sim', $user->nomor_sim) }}"
                                             class="flex w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white border rounded border-gray-200">
                                     </div>
                                     <div class="flex items-center">
-                                        <input placeholder="Alamat" id="alamat" type="text" name="alamat"
+                                        <input placeholder="Alamat" type="text" id="alamat" name="alamat"
+                                            value="{{ old('alamat', $user->alamat) }}"
                                             class="flex w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white border rounded border-gray-200">
                                     </div>
+
                                     <div class="flex items-center justify-between mt-9">
                                         <button
                                             class="px-6 py-3 bg-gray-400 hover:bg-gray-500 shadow rounded text-sm text-white">
-                                            Cancel
+                                            Kembali
                                         </button>
                                         <button type="submit"
                                             class="px-6 py-3 bg-indigo-700 hover:bg-opacity-80 shadow rounded text-sm text-white">
-                                            Update
+                                            Update Profile
                                         </button>
                                     </div>
                                 </div>

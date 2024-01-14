@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Mobil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -100,6 +101,41 @@ class UserController extends Controller
     public function edit(){
         $user = Auth::user();
         return view('user.edit', ['user' => $user]);
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'alamat' => $request->alamat,
+            'telp' => $request->telp,
+            'nomor_sim' => $request->nomor_sim,
+        ];
+
+        // Check if a new image is uploaded
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($user->image) {
+                Storage::delete('public/image/user/' . $user->image);
+            }
+
+            // Upload new image
+            $imageName = $request->file('image')->store('public/image/user');
+            $data['image'] = basename($imageName);
+        }
+
+        // Check if password is provided and update it
+        if ($request->filled('password')) {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        // dd($data);
+        $user->update($data);
+
+        return redirect('/profile');
     }
 
 }
