@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/show/{id}', [UserController::class, 'show'])->name('mobil.show');
 
+Route::get('/search/', [UserController::class, 'search'])->name('search');
+
 Route::prefix('/')->middleware(['auth', 'user'])->name('user.')->group(function () {
     Route::post('/sewa/{id}', [UserController::class, 'sewa'])->name('sewa');
     // require __DIR__ . '/user.php';

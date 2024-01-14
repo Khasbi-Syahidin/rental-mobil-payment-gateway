@@ -45,7 +45,6 @@ class UserController extends Controller
             'mobil' => $mobil,
             'pesan' => "Berhasil Menyewa Mobil {$mobil->merk} dengan Tipe {$mobil->model}"
         ]);
-
     }
 
 
@@ -55,5 +54,20 @@ class UserController extends Controller
         $data_pinjam = Sewa::where('user_id', $user_id)->get();
 
         return view('user.showUser', ['data_pinjam' => $data_pinjam]);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $mobils = Mobil::whereRaw('LOWER(merk) LIKE ?', ['%' . strtolower($search) . '%'])
+            ->orWhereRaw('LOWER(model) LIKE ?', ['%' . strtolower($search) . '%'])
+            ->orWhereRaw('LOWER(nomor_plat) LIKE ?', ['%' . strtolower($search) . '%'])
+            ->orWhereRaw('LOWER(status) LIKE ?', ['%' . strtolower($search) . '%'])
+            ->get();
+
+        // dd($mobils);
+
+        return view('user.search', ['mobils' => $mobils]);
     }
 }

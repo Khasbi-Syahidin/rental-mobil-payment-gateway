@@ -43,9 +43,9 @@
                     <div class="lg:mt-11 mt-10">
                         <div class="flex flex-col justify-between">
                             <p class="font-medium text-base leading-4 text-gray-600">Select quantity</p>
-                            <div class="flex justify-between my-3">
-                                <input type="date" name="awal_sewa" id="awal_sewa" width="100%">
-                                <input type="date" name="akhir_sewa" id="akhir_sewa" width="100%">
+                            <div class="flex justify-between my-3 gap-3">
+                                <input class="w-1/2 rounded-md bg-slate-300" type="date" name="awal_sewa" id="awal_sewa" width="100%" required>
+                                <input class="w-1/2 rounded-md bg-slate-300" type="date" name="akhir_sewa" id="akhir_sewa" width="100%" required>
 
                             </div>
                         </div>
@@ -56,17 +56,17 @@
 
                     @if ($mobil->status == 'Ready')
                         <button type="submit"
-                            class="focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6">
+                            class="rounded-md focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6">
                             Pinjam Mobil
                         </button>
                     @elseif ($mobil->status == 'Disewa')
                         <button disabled
-                            class="focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6">
+                            class="rounded-md focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6">
                             Mobil Sedang Di Sewa
                         </button>
                     @else
                         <button type="submit"
-                            class="focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6">
+                            class="rounded-md focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6">
                             Pinjam Mobil
                         </button>
                     @endif
