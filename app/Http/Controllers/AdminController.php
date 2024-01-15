@@ -53,10 +53,10 @@ class AdminController extends Controller
     public function edit($id)
     {
         $mobil = Mobil::find($id);
-        return view('admin.edit', ['mobil' => $mobil]);
+        return view('admin.editmobil', ['mobil' => $mobil, 'user' => Auth::user()]);
     }
 
-    public function update(Request $request, $id)
+    public function updatemobil(Request $request, $id)
     {
         $mobil = Mobil::find($id);
         $mobil->merk = $request->merk;
@@ -66,8 +66,8 @@ class AdminController extends Controller
         $mobil->status = $request->status;
         $mobil->tanggal_awal_ready = $request->tanggal_awal_ready;
         $mobil->tanggal_akhir_ready = $request->tanggal_akhir_ready;
-        $mobil->image = $request->image;
         if ($request->hasFile('image')) {
+            $mobil->image = $request->image;
             if (File::exists(public_path($mobil->image))) {
                 File::delete(public_path($mobil->image));
             }
@@ -79,7 +79,7 @@ class AdminController extends Controller
         }
 
         $mobil->save();
-        return redirect('/dashboard');
+        return redirect('/dashboard/index');
     }
 
     public function delete($id)
@@ -134,5 +134,11 @@ class AdminController extends Controller
         // dd($dataSewas);
 
         return view('user.profile', ['user' => $user, 'dataSewas' => $dataSewas]);
+    }
+
+    public function edittransaksi($id){
+        $transaksi = Sewa::find($id);
+        dd($transaksi);
+        return view('admin.edittransaksi', ['transaksi' => $transaksi]);
     }
 }

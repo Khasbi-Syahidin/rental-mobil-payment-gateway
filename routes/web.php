@@ -54,6 +54,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->name('admin.')->group
     Route::get('/transaction', [AdminController::class, 'transaction'])->name('transaction');
     Route::delete('delete/{id}', [AdminController::class, 'delete'])->name('mobil.delete');
     Route::get('/profileadmin', [AdminController::class, 'profileadmin'])->name('profileadmin');
+    Route::get('/edittransaksi/{id}', [AdminController::class, 'edittransaksi'])->name('edittransaksi');
+    Route::post('/mobilupdate/{id}', [AdminController::class, 'updatemobil'])->name('mobil.update');
 });
 
 

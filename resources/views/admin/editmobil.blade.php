@@ -14,19 +14,20 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="dashboard/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet"
+        href="{{ asset('dashboard/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <!-- iCheck -->
-    <link rel="stylesheet" href="dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- JQVMap -->
-    <link rel="stylesheet" href="dashboard/plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="{{ asset('dashboard/plugins/jqvmap/jqvmap.min.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{ asset('dashboard/dist/css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="{{ asset('dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="dashboard/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="{{ asset('dashboard/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
-    <link rel="stylesheet" href="dashboard/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="{{ asset('dashboard/plugins/summernote/summernote-bs4.min.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -88,7 +89,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="dashboar/dist/img/user1-128x128.jpg" alt="User Avatar"
+                                <img src="{{ asset('dashboard/dist/img/user1-128x128.jpg') }}" alt="User Avatar"
                                     class="img-size-50 mr-3 img-circle">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
@@ -105,7 +106,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="dist/img/user8-128x128.jpg" alt="User Avatar"
+                                <img src="{{ asset('dashboard/dist/img/user8-128x128.jpg') }}" alt="User Avatar"
                                     class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
@@ -122,7 +123,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="dist/img/user3-128x128.jpg" alt="User Avatar"
+                                <img src="{{ asset('dashboard/dist/img/user3-128x128.jpg') }}" alt="User Avatar"
                                     class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
@@ -186,8 +187,8 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
+                <img src="{{ asset('dashboard/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">AdminLTE 3</span>
             </a>
 
@@ -196,7 +197,8 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="{{ asset('dashboard/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                            alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">{{ $user->name }}</a>
@@ -290,7 +292,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">All Transaksi</h1>
+                            <h1 class="m-0">Dashboard</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -299,73 +301,84 @@
 
             <!-- Main content -->
             <section class="content">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Data Mobil</h3>
-
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body table-responsive p-0">
-                                <table class="table table-hover text-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama User</th>
-                                            <th>Telp</th>
-                                            <th>Merk</th>
-                                            <th>Model</th>
-                                            <th>Nomor Plat</th>
-                                            <th>Tarif</th>
-                                            <th>Status</th>
-                                            <th>Awal Ready</th>
-                                            <th>Akhir Ready</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php $no = 1 @endphp
-                                        @foreach ($dataSewas as $data)
-                                            <tr>
-                                                <td>{{ $no++ }}</td>
-                                                <td>{{ $data->user->name }}</td>
-                                                <td>@if ($data->user->telp == null)
-                                                    Tidak Tersedia
-                                                @endif
-                                                    {{ $data->user->telp }}
-                                                </td>
-                                                <td>{{ $data->mobil->merk }}</td>
-                                                <td>{{ $data->mobil->model }}</td>
-                                                <td>{{ $data->mobil->nomor_plat }}</td>
-                                                <td>{{ $data->tarif }}</td>
-                                                <td>{{ $data->mobil->status }}</td>
-                                                <td>{{ $data->mobil->tanggal_awal_ready }}</td>
-                                                <td>{{ $data->mobil->tanggal_akhir_ready }}</td>
-                                                <td>
-                                                    <a href="{{ route('admin.edittransaksi', $data->mobil->id) }}"
-                                                        class="btn btn-success">
-                                                        <i class="fas fa-edit"></i></a>
-                                                    <form action="{{ route('admin.mobil.delete', $data->mobil->id) }}"
-                                                        method="post" style="display: inline;">
-                                                        @csrf
-                                                        @method('DELETE')
-
-                                                        <button type="submit" class="btn btn-danger">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </form>
-
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Mobil Baru</h3>
                     </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form action="{{ route('admin.mobil.update', $mobil->id) }}" method="post"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Merk Mobil</label>
+                                <input type="text" class="form-control" id="merk" name="merk"
+                                    placeholder="Masukkan Merk Mobil" value="{{ old('merk', $mobil->merk) }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="model">Model</label>
+                                <input type="text" class="form-control" id="model" name="model"
+                                    placeholder="Masukkan Model Mobil" value="{{ old('model', $mobil->model) }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="nomor_plat">Nomor Plat</label>
+                                <input type="text" class="form-control" id="nomor_plat" name="nomor_plat"
+                                    placeholder="Masukkan Nomor Plat Mobil"
+                                    value="{{ old('nomor_plat', $mobil->nomor_plat) }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="model">Tarif</label>
+                                <input type="text" class="form-control" id="model" name="tarif"
+                                    placeholder="Masukkan Tarif" value="{{ old('tarif', $mobil->tarif) }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select class="form-control" id="status" name="status">
+                                    <option value=""
+                                        {{ old('status', $mobil->status) == '' ? 'selected' : '' }}>Pilih Status
+                                    </option>
+                                    <option value="Ready"
+                                        {{ old('status', $mobil->status) == 'Ready' ? 'selected' : '' }}>Ready</option>
+                                    <option value="Disewa"
+                                        {{ old('status', $mobil->status) == 'Disewa' ? 'selected' : '' }}>Disewa
+                                    </option>
+                                </select>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="model">Tanggal Awal Ready</label>
+                                <input type="date" class="form-control" id="model" name="tanggal_awal_ready"
+                                    placeholder="Masukkan Tanggal Awal Ready"
+                                    value="{{ old('tanggal_awal_ready', $mobil->tanggal_awal_ready) }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="model">Tanggal Akhir Ready</label>
+                                <input type="date" class="form-control" id="model" name="tanggal_akhir_ready"
+                                    placeholder="Masukkan Tanggal Akhir Ready"
+                                    value="{{ old('tanggal_akhir_ready', $mobil->tanggal_akhir_ready) }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFile">File input</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="exampleInputFile"
+                                            name="image" value="{{ old('image', $mobil->image) }}">
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Upload</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </section>
             <!-- /.content -->
