@@ -865,7 +865,6 @@
                                     <span class="ml-2 font-bold">Informasi Akun</span>
                                 </a>
                             </li>
-
                             <li
                             class="flex  px-1 py-4 cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
                                 <a href="{{ route('admin.dashboard') }}">

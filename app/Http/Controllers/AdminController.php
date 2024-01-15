@@ -97,23 +97,12 @@ class AdminController extends Controller
 
     public function transaction()
     {
-        $user_ids = Sewa::pluck('user_id')->unique();
-        $mobil_ids = Mobil::pluck('id')->unique();
-        $sewa = Sewa::all();
+        $dataSewas = Sewa::with('user', 'mobil')->get();
         $user = Auth::user();
-
-        // Gabungkan data menjadi satu tabel
-        $mergedData = new Collection([
-            'user_ids' => $user_ids,
-            'mobil_ids' => $mobil_ids,
-            'sewa' => $sewa,
-        ]);
-
-        // Tampilkan hasil
-        // dd($mergedData->all());
-
-        return view('admin.alltransaksi', ['datas' => $mergedData, 'user' => $user]);
+        // dd($dataSewas);
+        return view('admin.alltransaksi',  ['dataSewas' => $dataSewas, 'user' => $user]);
     }
+
 
 
     public function all()
@@ -122,27 +111,28 @@ class AdminController extends Controller
         return view('admin.allmobil', ['mobils' => $mobils, 'user' => Auth::user()]);
     }
 
-    public function profileadmin(){ 
-            $user = Auth::user();
-            $sewas = Sewa::where('user_id', $user->id)->get();
+    public function profileadmin()
+    {
+        $user = Auth::user();
+        $sewas = Sewa::where('user_id', $user->id)->get();
 
-            // Menggunakan loop untuk mendapatkan mobil dan tanggal terkait untuk setiap sewa
-            $dataSewas = [];
-            foreach ($sewas as $sewa) {
-                $mobil = Mobil::find($sewa->mobil_id);
-                if ($mobil) {
-                    $dataSewas[] = [
-                        'merk' => $mobil->merk,
-                        'model' => $mobil->model,
-                        'awal_sewa' => $sewa->awal_sewa, // Sesuaikan dengan nama kolom awal_sewa di tabel Sewa
-                        'akhir_sewa' => $sewa->akhir_sewa,
-                        'status' => $sewa->status, // Sesuaikan dengan nama kolom tanggal di tabel Sewa
-                    ];
-                }
+        // Menggunakan loop untuk mendapatkan mobil dan tanggal terkait untuk setiap sewa
+        $dataSewas = [];
+        foreach ($sewas as $sewa) {
+            $mobil = Mobil::find($sewa->mobil_id);
+            if ($mobil) {
+                $dataSewas[] = [
+                    'merk' => $mobil->merk,
+                    'model' => $mobil->model,
+                    'awal_sewa' => $sewa->awal_sewa, // Sesuaikan dengan nama kolom awal_sewa di tabel Sewa
+                    'akhir_sewa' => $sewa->akhir_sewa,
+                    'status' => $sewa->status, // Sesuaikan dengan nama kolom tanggal di tabel Sewa
+                ];
             }
-
-            // dd($dataSewas);
-
-            return view('user.profile', ['user' => $user, 'dataSewas' => $dataSewas]);
         }
+
+        // dd($dataSewas);
+
+        return view('user.profile', ['user' => $user, 'dataSewas' => $dataSewas]);
+    }
 }

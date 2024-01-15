@@ -324,21 +324,21 @@
                                     </thead>
                                     <tbody>
                                         @php $no = 1 @endphp
-                                        @foreach ($datas as $data)
+                                        @foreach ($dataSewas as $data)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ $data }}</td>
-                                                {{-- <td>{{ $data->model }}</td>
-                                                <td>{{ $data->nomor_plat }}</td>
+                                                <td>{{ $data->mobil->merk }}</td>
+                                                <td>{{ $data->mobil->model }}</td>
+                                                <td>{{ $data->mobil->nomor_plat }}</td>
                                                 <td>{{ $data->tarif }}</td>
-                                                <td>{{ $data->status }}</td>
-                                                <td>{{ $data->tanggal_awal_ready }}</td>
-                                                <td>{{ $data->tanggal_akhir_ready }}</td>
-                                                <td> --}}
-                                                    {{-- <a href="{{ route('admin.mobil.edit', $mobil->id) }}"
+                                                <td>{{ $data->mobil->status }}</td>
+                                                <td>{{ $data->mobil->tanggal_awal_ready }}</td>
+                                                <td>{{ $data->mobil->tanggal_akhir_ready }}</td>
+                                                <td>
+                                                    <a href="{{ route('admin.mobil.edit', $data->mobil->id) }}"
                                                         class="btn btn-success">
                                                         <i class="fas fa-edit"></i></a>
-                                                    <form action="{{ route('admin.mobil.delete', $mobil->id) }}"
+                                                    <form action="{{ route('admin.mobil.delete', $data->mobil->id) }}"
                                                         method="post" style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
@@ -346,7 +346,7 @@
                                                         <button type="submit" class="btn btn-danger">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
-                                                    </form> --}}
+                                                    </form>
 
                                                 </td>
                                             </tr>

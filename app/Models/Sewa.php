@@ -16,7 +16,7 @@ class Sewa extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function buku()
+    public function mobil()
     {
         return $this->belongsTo(Mobil::class);
     }
