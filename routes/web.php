@@ -53,6 +53,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->name('admin.')->group
     Route::get('/index', [AdminController::class, 'all'])->name('mobil.index');
     Route::get('/transaction', [AdminController::class, 'transaction'])->name('transaction');
     Route::delete('delete/{id}', [AdminController::class, 'delete'])->name('mobil.delete');
+    Route::get('/profileadmin', [AdminController::class, 'profileadmin'])->name('profileadmin');
 });
 
 

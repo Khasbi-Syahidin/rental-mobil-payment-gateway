@@ -857,25 +857,26 @@
                                             class="fa-solid fa-magnifying-glass"></i>Cari</button>
                                 </form>
                             </li>
-                            <li
-                                class="flex cursor-pointer px-1 py-4 text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
-                                <a href="javascript:void(0)">
-                                    <span class="ml-2 font-bold">Informasi Transaksi</span>
+                            @auth
+                            @if (auth()->user()->role == 1 )
+                            <li class="flex  px-1 py-4 flex-col cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center"
+                                onclick="dropdownHandler(this)">
+                                <a href="{{ route('admin.profileadmin')}}">
+                                    <span class="ml-2 font-bold">Informasi Akun</span>
                                 </a>
                             </li>
+
+                            <li
+                            class="flex  px-1 py-4 cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
+                                <a href="{{ route('admin.dashboard') }}">
+                                    <span class="ml-2 font-bold">Dashboard Admin</span>
+                                </a>
+                            </li>
+                            @else
                             <li class="flex  px-1 py-4 flex-col cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center"
                                 onclick="dropdownHandler(this)">
                                 <a href="{{ route('user.profile')}}">
                                     <span class="ml-2 font-bold">Informasi Akun</span>
-                                </a>
-                            </li>
-                            @auth
-                                @if (auth()->user()->role == 'admin')
-
-                            <li
-                                class="flex  px-1 py-4 cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
-                                <a href="{{ route('admin.dashboard')}})">
-                                    <span class="ml-2 font-bold">Dashboard Admin</span>
                                 </a>
                             </li>
                                 @endif
@@ -950,7 +951,12 @@
                 <div class="w-fit justify-end relative inline-block text-left">
                     @auth
                         {{-- Tombol logout atau aksi lain --}}
-                        <a href="{{ route('user.profile')}}">
+                        @if (auth()->user() && auth()->user()->role == 1)
+
+                        <a href="{{ route('admin.profileadmin')}}">
+                            @else
+                            <a href="{{ route('user.profile')}}">
+                        @endif
                         @if (auth()->user() && auth()->user()->image == '')
                             <img type="button" id="menu-button" aria-expanded="true" aria-haspopup="true"
                                 class="rounded-full cursor-pointer dropdown-toggle" width="45"

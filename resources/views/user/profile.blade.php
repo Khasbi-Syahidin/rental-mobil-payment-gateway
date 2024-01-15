@@ -139,11 +139,21 @@
                     Kembali
                 </a>
             </button>
+            @if ( auth()->user()->role == 1 )
+
+            <button class="w-full py-3 bg-indigo-700 hover:bg-opacity-80 shadow rounded text-sm text-white">
+                <a href="{{ route('admin.dashboard') }}">
+                    Dashboard
+                </a>
+            </button>
+            @else
+
             <button class="w-full py-3 bg-indigo-700 hover:bg-opacity-80 shadow rounded text-sm text-white">
                 <a href="{{ route('user.edit') }}">
                     Update Profile
                 </a>
             </button>
+            @endif
             <button class="w-full py-3 bg-red-700 hover:bg-opacity-80 shadow rounded text-sm text-white">
                 <a href="{{ route('logout') }}" method="post" as="button">
                     Logout
