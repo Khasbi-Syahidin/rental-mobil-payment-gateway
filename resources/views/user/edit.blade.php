@@ -19,9 +19,10 @@
         <div class="w-full h-full bg-primary z-0 ">
             <div class="mx-auto container">
                 <div class="flex items-center justify-center h-full w-full">
-                    <div class="bg-white rounded-md shadow-soft-2xl sm:h-auto w-10/12 md:w-8/12 lg:w-1/2 2xl:w-2/5">
+                    <div
+                        class="bg-gray-100 mt-20 border-gray-600 shadow-2xl rounded-md  shadow-soft-2xl sm:h-auto w-10/12 md:w-8/12 lg:w-1/2 2xl:w-2/5">
                         <div
-                            class="bg-gray-100 rounded-tl-md rounded-tr-md px-4 md:px-8 md:py-4 py-7 flex items-center justify-between">
+                            class="bg-gray-300 rounded-tl-md rounded-tr-md px-4 md:px-8 md:py-4 py-7 flex items-center justify-between">
                             <p class="text-base font-semibold">
                                 Edit Profile
                             </p>
@@ -29,7 +30,7 @@
                         <form action="{{ route('user.update') }}" enctype="multipart/form-data" method="post">
                             @csrf
                             <div class="px-4 md:px-10 pt-6 md:pt-12 md:pb-4 pb-7">
-                                <div class="px-4 md:px-10  pt-6 md:pt-12 md:pb-4 pb-7">
+                                <div class="px-4 md:px-10  pt-6 md:pt-10 md:pb-4 pb-7">
                                     <a href="#" id="profile-link" class="flex justify-center">
                                         <div class="rounded w-20">
                                             @if (auth()->user() && auth()->user()->image == '')
@@ -38,8 +39,7 @@
                                                     alt="profile"
                                                     class="object-center object-cover w-full h-full rounded-full aspect-square" />
                                             @else
-                                                <img id="preview-image" src="{{ asset('${auth()->user()->image}') }}"
-                                                    alt="profile"
+                                                <img id="preview-image" src="{{ $user->image }}" alt="profile"
                                                     class="object-center object-cover w-full h-full rounded-full aspect-square" />
                                             @endif
                                         </div>
@@ -75,17 +75,20 @@
                                 </script>
 
                                 <div class="mt-11 flex flex-col md:flex-col sm:flex-col gap-4">
-                                    <div class="flex items-center">
+                                    <div class="flex flex-col">
+                                        <label class="pl-2" for="name">Name</label>
                                         <input placeholder="Name" id="name" type="text" name="name"
                                             value="{{ old('name', $user->name) }}"
                                             class="flex w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white border rounded border-gray-200">
                                     </div>
-                                    <div class="flex items-center">
+                                    <div class="flex flex-col">
+                                        <label class="pl-2" for="email">Email</label>
                                         <input placeholder="Email" id="email" type="email" name="email"
                                             value="{{ old('email', $user->email) }}"
                                             class="flex w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white border rounded border-gray-200">
                                     </div>
-                                    <div class="flex items-center">
+                                    <div class="flex flex-col">
+                                        <label class="pl-2" for="password">Password</label>
                                         <input placeholder="Password" id="password" type="password" name="password"
                                             value="{{ old('password') }}"
                                             class="flex w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white border rounded border-gray-200">
@@ -96,17 +99,20 @@
                                     </div>
 
 
-                                    <div class="flex items-center">
+                                    <div class="flex flex-col">
+                                        <label class="pl-2" for="phone">Phone</label>
                                         <input placeholder="Phone" id="phone" type="number" name="telp"
                                             value="{{ old('telp', $user->telp) }}"
                                             class="flex w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white border rounded border-gray-200">
                                     </div>
-                                    <div class="flex items-center">
+                                    <div class="flex flex-col">
+                                        <label class="pl-2" for="nomor_sim">Nomor Sim</label>
                                         <input placeholder="Nomor Sim" id="nomor_sim" type="text" name="nomor_sim"
                                             value="{{ old('nomor_sim', $user->nomor_sim) }}"
                                             class="flex w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white border rounded border-gray-200">
                                     </div>
-                                    <div class="flex items-center">
+                                    <div class="flex flex-col">
+                                        <label class="pl-2" for="alamat">Alamat</label>
                                         <input placeholder="Alamat" type="text" id="alamat" name="alamat"
                                             value="{{ old('alamat', $user->alamat) }}"
                                             class="flex w-full focus:outline-none placeholder-gray-500 py-3 px-3 text-sm leading-none text-gray-800 bg-white border rounded border-gray-200">

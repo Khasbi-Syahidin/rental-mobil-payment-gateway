@@ -23,7 +23,8 @@ class User extends Authenticatable
         'password',
         'alamat',
         'telp',
-        'nomor_sim'
+        'nomor_sim',
+        'image'
     ];
 
     /**

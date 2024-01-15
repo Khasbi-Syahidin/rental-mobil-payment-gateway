@@ -16,7 +16,7 @@
 
 
     <div
-        class="px-4 mx-auto rounded-lg md:my-8 xl:my-10 sm:mt-0 md:px-8 py-6 md:w-1/2 w-full sm:border-r border-gray-200 shadow-soft-2xl">
+        class="px-4 mx-auto bg-gray-100 rounded-lg md:my-8 xl:my-10 sm:mt-0 md:px-8 py-6 md:w-1/2 w-full sm:border-r border-gray-500 shadow-2xl">
 
 
         <div class="container">
@@ -32,7 +32,7 @@
                                             alt="profile"
                                             class="object-center object-cover w-full h-full rounded-full aspect-square" />
                                     @else
-                                        <img src="{{ asset('${auth()->user()->image}') }}" alt="profile"
+                                        <img src="{{ auth()->user()->image }}" alt="profile"
                                             class="object-center object-cover w-full h-full rounded-full aspect-square" />
                                     @endif
                                 </div>
@@ -60,6 +60,9 @@
                 </div>
             </div>
 
+            <div class="mt-8 bg-slate-300 p-4 rounded-lg">
+                <p class="text-sm sm:text-base lg:text-xl font-medium leading-none text-gray-700">Kamu belum memiliki riwayat transaksi</p>
+            </div>
             @foreach ($dataSewas as $sewa)
                 <div class="mt-8 bg-slate-300 p-5 rounded-lg">
                     <div class="sm:flex justify-between items-end">
@@ -130,23 +133,25 @@
                 </div>
             @endforeach
         </div>
+        <div class="flex lg:gap-7 md:gap-3 gap-0 items-center justify-between mt-9">
+            <button  class="w-full py-3 bg-gray-400 hover:bg-gray-500 shadow rounded text-sm text-white">
+                <a href="{{ route('home') }}">
+                    Kembali
+                </a>
+            </button>
+            <button class="w-full py-3 bg-indigo-700 hover:bg-opacity-80 shadow rounded text-sm text-white">
+                <a href="{{ route('user.edit') }}">
+                    Update Profile
+                </a>
+            </button>
+            <button class="w-full py-3 bg-red-700 hover:bg-opacity-80 shadow rounded text-sm text-white">
+                <a href="{{ route('logout') }}" method="post" as="button">
+                    Logout
+                </a>
+            </button>
+        </div>
     </div>
 
-    <div class="flex lg:gap-7 md:gap-3 gap-0 items-center justify-between mt-9">
-        <button class="w-full py-3 bg-gray-400 hover:bg-gray-500 shadow rounded text-sm text-white">
-            Cancel
-        </button>
-        <button class="w-full py-3 bg-indigo-700 hover:bg-opacity-80 shadow rounded text-sm text-white">
-            <a href="{{ route('user.edit') }}">
-                Update Profile
-            </a>
-        </button>
-        <button class="w-full py-3 bg-red-700 hover:bg-opacity-80 shadow rounded text-sm text-white">
-            <a href="{{ route('logout') }}" method="post" as="button">
-                Logout
-            </a>
-        </button>
-    </div>
     </div>
 </body>
 

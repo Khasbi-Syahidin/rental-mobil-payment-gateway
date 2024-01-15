@@ -258,6 +258,24 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Beranda
+                                    <span class="right badge badge-danger">New</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('logout') }}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Logout
+                                    <span class="right badge badge-danger">New</span>
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -319,9 +337,9 @@
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>{{ $user->count() }}</h3>
+                                    <h3 class="text-white">{{ $user->count() }}</h3>
 
-                                    <p>User Registrations</p>
+                                    <p class="text-white">User Registrations</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person-add"></i>

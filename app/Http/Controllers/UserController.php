@@ -98,7 +98,8 @@ class UserController extends Controller
         return view('user.profile', ['user' => $user, 'dataSewas' => $dataSewas]);
     }
 
-    public function edit(){
+    public function edit()
+    {
         $user = Auth::user();
         return view('user.edit', ['user' => $user]);
     }
@@ -119,12 +120,16 @@ class UserController extends Controller
         if ($request->hasFile('image')) {
             // Delete old image if exists
             if ($user->image) {
-                Storage::delete('public/image/user/' . $user->image);
+                $oldImagePath = public_path($user->image);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
             }
 
-            // Upload new image
-            $imageName = $request->file('image')->store('public/image/user');
-            $data['image'] = basename($imageName);
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('image/user'), $imageName);
+            $data['image'] = 'image/user/' . $imageName;
         }
 
         // Check if password is provided and update it
@@ -132,10 +137,9 @@ class UserController extends Controller
             $data['password'] = bcrypt($request->password);
         }
 
-        // dd($data);
+        // Update user data
         $user->update($data);
 
         return redirect('/profile');
     }
-
 }
