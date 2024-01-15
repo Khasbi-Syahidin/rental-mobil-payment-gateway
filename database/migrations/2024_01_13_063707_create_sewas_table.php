@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('mobil_id');
             $table->date('awal_sewa');
             $table->date('akhir_sewa');
+            $table->string('tarif');
             $table->string('status');
 
 

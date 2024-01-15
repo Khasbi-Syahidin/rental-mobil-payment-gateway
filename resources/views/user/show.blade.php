@@ -44,9 +44,11 @@
                         <div class="flex flex-col justify-between">
                             <p class="font-medium text-base leading-4 text-gray-600">Select quantity</p>
                             <div class="flex justify-between my-3 gap-3">
-                                <input class="w-1/2 rounded-md bg-slate-300" type="date" name="awal_sewa" id="awal_sewa" width="100%" required>
-                                <input class="w-1/2 rounded-md bg-slate-300" type="date" name="akhir_sewa" id="akhir_sewa" width="100%" required>
-
+                                <input class="w-1/2 rounded-md bg-slate-300" type="date" name="awal_sewa"
+                                    id="awal_sewa" width="100%" required>
+                                <input class="w-1/2 rounded-md bg-slate-300" type="date" name="akhir_sewa"
+                                    id="akhir_sewa" width="100%" required>
+                                <input type="text" name="tarif" id="tarif" value="" hidden>
                             </div>
                         </div>
                         <hr class="bg-gray-200 w-full my-2" />
@@ -71,12 +73,12 @@
                         </button>
                     @endif
 
-
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
                             const awalSewaInput = document.getElementById('awal_sewa');
                             const akhirSewaInput = document.getElementById('akhir_sewa');
                             const resultContainer = document.getElementById('result');
+                            const tarifInput = document.getElementById('tarif');
 
                             awalSewaInput.addEventListener('input', updateHarga);
                             akhirSewaInput.addEventListener('input', updateHarga);
@@ -101,11 +103,15 @@
 
                                 const formattedHarga = formatToRupiah(totalHarga);
                                 resultContainer.innerHTML = `Total Harga: ${formattedHarga}`;
+
+                                // Set nilai tarif di dalam input dengan nama "tarif"
+                                tarifInput.value = totalHarga;
                             }
                         });
                     </script>
 
                 </form>
+
 
             </div>
 

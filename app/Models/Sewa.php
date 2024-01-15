@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sewa extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'mobil_id', 'awal_sewa', 'akhir_sewa', 'status'];
+    protected $fillable = ['user_id', 'mobil_id', 'awal_sewa', 'akhir_sewa', 'tarif', 'status'];
 
 
     public function user()

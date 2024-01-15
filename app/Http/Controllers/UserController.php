@@ -30,6 +30,7 @@ class UserController extends Controller
         $user_id = Auth::user()->id;
         $awal_sewa = $request->input('awal_sewa');
         $akhir_sewa = $request->input('akhir_sewa');
+        $tarif = $request->input('tarif');
 
         // dd($awal_sewa);
         $sewa = Sewa::create([
@@ -38,6 +39,7 @@ class UserController extends Controller
             'status' => 'Disewa',
             'awal_sewa' => $awal_sewa,
             'akhir_sewa' => $akhir_sewa,
+            'tarif' => $tarif
         ]);
 
         $mobil->status = 'Disewa';
