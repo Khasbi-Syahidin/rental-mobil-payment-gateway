@@ -27,27 +27,58 @@ class UserController extends Controller
     public function sewa(Request $request, $id)
     {
         $mobil = Mobil::find($id);
-        $user_id = Auth::user()->id;
+        $user = Auth::user();
         $awal_sewa = $request->input('awal_sewa');
         $akhir_sewa = $request->input('akhir_sewa');
         $tarif = $request->input('tarif');
 
-        // dd($awal_sewa);
-        $sewa = Sewa::create([
-            'user_id' => $user_id,
-            'mobil_id' => $mobil->id,
-            'status' => 'Disewa',
-            'awal_sewa' => $awal_sewa,
-            'akhir_sewa' => $akhir_sewa,
-            'tarif' => $tarif
-        ]);
+        // dd($user->id);
+        // $sewa = Sewa::create([
+        //     'user_id' => $user->id,
+        //     'mobil_id' => $mobil->id,
+        //     'status' => 'Disewa',
+        //     'awal_sewa' => $awal_sewa,
+        //     'akhir_sewa' => $akhir_sewa,
+        //     'tarif' => $tarif
+        // ]);
 
-        $mobil->status = 'Disewa';
-        $mobil->save();
+        // $mobil->status = 'Disewa';
+        // $mobil->save();
+
+
+
+
+
+        //SAMPLE REQUEST START HERE
+
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => $tarif,
+            ),
+            'customer_details' => array(
+                'first_name' => $user->name,
+                'email' => $user->email,
+                'phone' => '08111222333',
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        // dd($snapToken);
 
         return view('user.show', [
             'mobil' => $mobil,
-            'pesan' => "Berhasil Menyewa Mobil {$mobil->merk} dengan Tipe {$mobil->model}"
+            'pesan' => "Berhasil Menyewa Mobil {$mobil->merk} dengan Tipe {$mobil->model}",
+            'snapToken' => $snapToken
         ]);
     }
 

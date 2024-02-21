@@ -136,7 +136,8 @@ class AdminController extends Controller
         return view('user.profile', ['user' => $user, 'dataSewas' => $dataSewas]);
     }
 
-    public function edittransaksi($id){
+    public function edittransaksi($id)
+    {
         $transaksi = Sewa::find($id);
         dd($transaksi);
         return view('admin.edittransaksi', ['transaksi' => $transaksi]);

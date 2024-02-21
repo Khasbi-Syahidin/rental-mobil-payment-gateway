@@ -6,12 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
+
+    {{-- Midtrans --}}
+
+    <script type="text/javascript"
+      src="https://app.sandbox.midtrans.com/snap/snap.js"
+      data-client-key={{ config('midtrans.client_key') }}></script>
+    {{-- <script type="text/javascript"
+		src="https://app.stg.midtrans.com/snap/snap.js"
+    data-client-key={{ config('midtrans.client_key') }}></script> --}}
+
+    {{-- End Midtrans --}}
     <title>Document</title>
 </head>
 
 <body>
-
+    @if(isset($snapToken))
+    <input type="hidden" id="snapTokenInput" value="{{ $snapToken }}">
+    @endif
     <div class="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4">
+        <div class="absolute">
+            <div class=" w-40 h-40">
+                <div id="snap-container"></div>
+                @if(isset($snapToken))
+                <script type="text/javascript">
+                    // Mengambil nilai $snapToken dari input tersembunyi
+                    var $snapToken = document.getElementById('snapTokenInput').value;
+
+                    // Trigger snap popup jika $snapToken tidak kosong
+                    if ($snapToken !== null && $snapToken !== '') {
+                        // Gantilah TRANSACTION_TOKEN_HERE dengan token transaksi Anda
+                        // window.snap.embed($snapToken, {
+                        //     embedId: 'snap-container'
+                        // });
+
+                        window.snap.pay($snapToken);
+                    }
+                </script>
+                 @endif
+            </div>
+        </div>
         <div class="flex justify-center items-center lg:flex-row flex-col gap-8">
 
             <div class="w-full sm:w-96 md:w-8/12 lg:w-6/12 flex lg:flex-row flex-col lg:gap-8 sm:gap-6 gap-4">
@@ -69,6 +103,7 @@
                     @else
                         <button type="submit"
                             class="rounded-md focus:outline-none focus:ring-2 hover:bg-black focus:ring-offset-2 focus:ring-gray-800 font-medium text-base leading-4 text-white bg-gray-800 w-full py-5 lg:mt-12 mt-6">
+                            <a href=""></a>
                             Pinjam Mobil
                         </button>
                     @endif
